@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Interview in the AI-Era: Coding, Systems, Agents</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #CEB888;
+    --gold-light: #e8d9b0;
+    --gold-dark: #a8945e;
+    --black: #2C2A29;
+    --black-soft: #3d3b39;
+    --cream: #faf8f4;
+    --cream-dark: #f0ece3;
+    --text: #2C2A29;
+    --text-muted: #6b6560;
+    --border: rgba(206,184,136,0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--gold);
+  }
+
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 40px;
+  }
+
+  .purdue-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .purdue-badge-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    font-family: 'Playfair Display', serif;
+    flex-shrink: 0;
+  }
+
+  .purdue-badge-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  h1 span {
+    color: var(--gold);
+  }
+
+  .header-tagline {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── INFO STRIP ── */
+  .info-strip {
+    background: var(--gold);
+    padding: 0;
+  }
+
+  .info-strip-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px 14px 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  .info-item:not(:last-child) {
+    border-right: 1px solid rgba(44,42,41,0.2);
+    margin-right: 24px;
+  }
+
+  .info-icon {
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── DESCRIPTION ── */
+  .description-text {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  /* ── LECTURE CARDS ── */
+  .lectures-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .lecture-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+
+  .lecture-card:first-child { border-radius: 8px 8px 0 0; }
+  .lecture-card:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 8px 8px; }
+
+  .lecture-card:hover {
+    box-shadow: 0 4px 20px rgba(44,42,41,0.08);
+    z-index: 1;
+  }
+
+  .lecture-header {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .lecture-num {
+    background: var(--black);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    width: 56px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+  }
+
+  .lecture-card:first-child .lecture-num { border-radius: 7px 0 0 0; }
+  .lecture-card:last-child .lecture-num { border-radius: 0 0 0 7px; }
+
+  .lecture-main {
+    flex: 1;
+    padding: 16px 20px;
+  }
+
+  .lecture-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+
+  .lecture-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .lecture-toggle {
+    width: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-dark);
+    font-size: 18px;
+    transition: transform 0.2s;
+    user-select: none;
+  }
+
+  .lecture-card.open .lecture-toggle { transform: rotate(180deg); }
+
+  .lecture-body {
+    display: none;
+    border-top: 1px solid var(--border);
+    background: var(--cream);
+    padding: 20px 20px 20px 76px;
+  }
+
+  .lecture-card.open .lecture-body { display: block; }
+
+  /* Skills & Communication columns */
+  .lecture-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .lc-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 6px;
+  }
+
+  .lc-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Instructors row */
+  .lecture-instructors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .instructor-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    padding: 6px 14px 6px 6px;
+  }
+
+  .instructor-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .instructor-info { line-height: 1.2; }
+  .instructor-name { font-size: 12px; font-weight: 600; color: var(--black); }
+  .instructor-email { font-size: 11px; color: var(--gold-dark); text-decoration: none; }
+  .instructor-email:hover { text-decoration: underline; }
+
+  /* Links row */
+  .lecture-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+  }
+
+  .link-btn.slides {
+    background: var(--black);
+    color: var(--gold);
+    border: 1px solid var(--black);
+  }
+  .link-btn.slides:hover { background: var(--black-soft); }
+
+  .link-btn.slides-soon {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px dashed var(--border);
+    cursor: default;
+    opacity: 0.7;
+  }
+
+  .link-btn.resource {
+    background: transparent;
+    color: var(--black);
+    border: 1px solid var(--border);
+  }
+  .link-btn.resource:hover { background: var(--cream-dark); }
+
+  /* ── SIDEBAR ── */
+  .sidebar { }
+
+  .info-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .info-card-head {
+    background: var(--black);
+    padding: 14px 18px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .info-card-body { padding: 18px; }
+
+  .info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .info-row:first-child { padding-top: 0; }
+
+  .info-row-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+  }
+
+  .info-row-value {
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .info-row-value a {
+    color: var(--gold-dark);
+    text-decoration: none;
+  }
+  .info-row-value a:hover { text-decoration: underline; }
+
+  .prereq-tag {
+    display: inline-block;
+    background: var(--cream-dark);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 12px;
+    color: var(--text);
+    margin: 2px 2px 2px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 4px solid var(--gold);
+    padding: 24px 32px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.5px;
+  }
+
+  footer span { color: var(--gold); opacity: 0.8; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    main { grid-template-columns: 1fr; padding: 24px 16px; }
+    .header-inner { padding: 32px 16px 28px; }
+    .info-strip-inner { padding: 0 16px; }
+    .info-item { font-size: 12px; padding: 12px 16px 12px 0; }
+    .lecture-cols { grid-template-columns: 1fr; }
+    .lecture-body { padding-left: 20px; }
+    footer { padding: 20px 16px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lecture-card {
+    animation: fadeUp 0.4s ease both;
+  }
+  .lecture-card:nth-child(1) { animation-delay: 0.05s; }
+  .lecture-card:nth-child(2) { animation-delay: 0.10s; }
+  .lecture-card:nth-child(3) { animation-delay: 0.15s; }
+  .lecture-card:nth-child(4) { animation-delay: 0.20s; }
+  .lecture-card:nth-child(5) { animation-delay: 0.25s; }
+  .lecture-card:nth-child(6) { animation-delay: 0.30s; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="header-inner">
+    <div class="purdue-badge">
+      <div class="purdue-badge-icon">P</div>
+      <div class="purdue-badge-text">Purdue University · ECE Department</div>
+    </div>
+    <h1>Job Interview in the <span>AI-Era</span></h1>
+    <div class="header-tagline">Coding · Systems · Agents — A Two-Week Intensive Bootcamp</div>
+  </div>
+</header>
+
+<!-- ═══ INFO STRIP ═══ -->
+<div class="info-strip">
+  <div class="info-strip-inner">
+    <div class="info-item"><span class="info-icon">📅</span> May 18 – 29, 2026</div>
+    <div class="info-item"><span class="info-icon">🕙</span> MWF · 10am–12pm Eastern</div>
+    <div class="info-item"><span class="info-icon">🎓</span> Undergrad Seniors / MS Students</div>
+    <div class="info-item"><span class="info-icon">📧</span> @purdue.edu required</div>
+  </div>
+</div>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main>
+
+  <!-- LEFT: Syllabus -->
+  <div>
+    <div class="section-label">Course Overview</div>
+    <div class="section-title">About This Bootcamp</div>
+    <p class="description-text">
+      This two-week program targets Undergraduate seniors and MS students preparing for coding interviews.
+      Topics span the full structure of a typical coding interview process — data structures (trees, graphs,
+      dictionaries), AI-assisted debugging, machine learning systems, and soft skills including communication
+      strategies and problem breakdowns. The bootcamp features hands-on activities throughout.
+    </p>
+
+    <div class="section-label">Schedule</div>
+    <div class="section-title">Lecture Syllabus</div>
+
+    <div class="lectures-list">
+
+      <!-- Lecture 1 -->
+      <div class="lecture-card" id="lec1">
+        <div class="lecture-header" onclick="toggle('lec1')">
+          <div class="lecture-num">01</div>
+          <div class="lecture-main">
+            <div class="lecture-title">Foundation: Python & OOP</div>
+            <div class="lecture-subtitle">Basics review, Complexity Analysis, Object-Oriented Programming</div>
+          </div>
+          <div class="lecture-toggle">&#8964;</div>
+        </div>
+        <div class="lecture-body">
+          <div class="lecture-cols">
+            <div>
+              <div class="lc-label">Technical Skills</div>
+              <div class="lc-text">Python basics review, O notation complexity analysis, Map/Reduce concepts, Object-Oriented Programming (OOP).</div>
+            </div>
+            <div>
+              <div class="lc-label">Communication & Strategy</div>
+              <div class="lc-text">Interview formats, recruitment pipelines, and hiring timelines.</div>
+            </div>
+          </div>
+          <div class="lecture-instructors">
+            <div class="instructor-chip">
+              <div class="instructor-avatar">WC</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Wei Chen</div>
+                <a class="instructor-email" href="mailto:chen2732@purdue.edu">chen2732@purdue.edu</a>
+              </div>
+            </div>
+            <div class="instructor-chip">
+              <div class="instructor-avatar">PC</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Prateek Chennuri</div>
+                <a class="instructor-email" href="mailto:pchennuri@purdue.edu">pchennuri@purdue.edu</a>
+              </div>
+            </div>
+          </div>
+          <div class="lecture-links">
+            <a class="link-btn slides" href="slides/lecture1-python-oop.pdf" target="_blank">&#9654; Slides (PDF)</a>
+            <a class="link-btn resource" href="https://docs.python.org/3/tutorial/" target="_blank">Python Docs</a>
+            <a class="link-btn resource" href="https://www.bigocheatsheet.com/" target="_blank">Big-O Cheatsheet</a>
+            <a class="link-btn resource" href="https://realpython.com/python3-object-oriented-programming/" target="_blank">OOP Tutorial</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lecture 2 -->
+      <div class="lecture-card" id="lec2">
+        <div class="lecture-header" onclick="toggle('lec2')">
+          <div class="lecture-num">02</div>
+          <div class="lecture-main">
+            <div class="lecture-title">Data & Scalability</div>
+            <div class="lecture-subtitle">Core DSA — Trees, Graphs, Dictionaries, List operations, Memory</div>
+          </div>
+          <div class="lecture-toggle">&#8964;</div>
+        </div>
+        <div class="lecture-body">
+          <div class="lecture-cols">
+            <div>
+              <div class="lc-label">Technical Skills</div>
+              <div class="lc-text">Core DSA: Trees, Graphs, Dictionaries. Map/Reduce concepts, list slicing, and memory management strategies.</div>
+            </div>
+            <div>
+              <div class="lc-label">Communication & Strategy</div>
+              <div class="lc-text">How to talk to recruiters, professional email etiquette, and phone screen best practices.</div>
+            </div>
+          </div>
+          <div class="lecture-instructors">
+            <div class="instructor-chip">
+              <div class="instructor-avatar">WC</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Wei Chen</div>
+                <a class="instructor-email" href="mailto:chen2732@purdue.edu">chen2732@purdue.edu</a>
+              </div>
+            </div>
+            <div class="instructor-chip">
+              <div class="instructor-avatar">PC</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Prateek Chennuri</div>
+                <a class="instructor-email" href="mailto:pchennuri@purdue.edu">pchennuri@purdue.edu</a>
+              </div>
+            </div>
+          </div>
+          <div class="lecture-links">
+            <a class="link-btn slides" href="slides/lecture2-data-scalability.pdf" target="_blank">&#9654; Slides (PDF)</a>
+            <a class="link-btn resource" href="https://leetcode.com/explore/learn/" target="_blank">LeetCode DSA Guide</a>
+            <a class="link-btn resource" href="https://visualgo.net/en" target="_blank">Visualgo (Tree/Graph)</a>
+            <a class="link-btn resource" href="https://realpython.com/python-memory-management/" target="_blank">Python Memory Model</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lecture 3 -->
+      <div class="lecture-card" id="lec3">
+        <div class="lecture-header" onclick="toggle('lec3')">
+          <div class="lecture-num">03</div>
+          <div class="lecture-main">
+            <div class="lecture-title">Foundation: AI Agents</div>
+            <div class="lecture-subtitle">How Claude works, designing agents, adding agents to systems</div>
+          </div>
+          <div class="lecture-toggle">&#8964;</div>
+        </div>
+        <div class="lecture-body">
+          <div class="lecture-cols">
+            <div>
+              <div class="lc-label">Technical Skills</div>
+              <div class="lc-text">Learn how Claude works, how to design agents for specific tasks, and how to integrate agents into the overall system architecture.</div>
+            </div>
+            <div>
+              <div class="lc-label">Communication & Strategy</div>
+              <div class="lc-text">Problem breakdowns: how to break complex interview problems into small, manageable sub-tasks.</div>
+            </div>
+          </div>
+          <div class="lecture-instructors">
+            <div class="instructor-chip">
+              <div class="instructor-avatar">DC</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Deming Chu</div>
+                <a class="instructor-email" href="mailto:dchu@purdue.edu">dchu@purdue.edu</a>
+              </div>
+            </div>
+            <div class="instructor-chip">
+              <div class="instructor-avatar">ZP</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Zhaoying Pan</div>
+                <a class="instructor-email" href="mailto:zpan@purdue.edu">zpan@purdue.edu</a>
+              </div>
+            </div>
+          </div>
+          <div class="lecture-links">
+            <a class="link-btn slides" href="slides/lecture3-ai-agents.pdf" target="_blank">&#9654; Slides (PDF)</a>
+            <a class="link-btn resource" href="https://docs.anthropic.com" target="_blank">Anthropic Docs</a>
+            <!-- <a class="link-btn resource" href="https://www.anthropic.com/research/building-effective-agents" target="_blank">Agent Design Patterns</a>
+            <a class="link-btn resource" href="https://python.langchain.com/docs/get_started/introduction" target="_blank">LangChain Intro</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Lecture 4 -->
+      <div class="lecture-card" id="lec4">
+        <div class="lecture-header" onclick="toggle('lec4')">
+          <div class="lecture-num">04</div>
+          <div class="lecture-main">
+            <div class="lecture-title">ML: Data Pipelines</div>
+            <div class="lecture-subtitle">Preprocessing, ETL (Extract, Transform, Load), handling data noise</div>
+          </div>
+          <div class="lecture-toggle">&#8964;</div>
+        </div>
+        <div class="lecture-body">
+          <div class="lecture-cols">
+            <div>
+              <div class="lc-label">Technical Skills</div>
+              <div class="lc-text">Data preprocessing strategies, ETL pipeline design (Extract, Transform, Load), and robust techniques for handling data noise and missing values.</div>
+            </div>
+            <div>
+              <div class="lc-label">Communication & Strategy</div>
+              <div class="lc-text">How to ask for hints or clarification effectively during technical interviews.</div>
+            </div>
+          </div>
+          <div class="lecture-instructors">
+            <div class="instructor-chip">
+              <div class="instructor-avatar">DC</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Deming Chu</div>
+                <a class="instructor-email" href="mailto:dchu@purdue.edu">dchu@purdue.edu</a>
+              </div>
+            </div>
+            <div class="instructor-chip">
+              <div class="instructor-avatar">ZP</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Zhaoying Pan</div>
+                <a class="instructor-email" href="mailto:zpan@purdue.edu">zpan@purdue.edu</a>
+              </div>
+            </div>
+          </div>
+          <div class="lecture-links">
+            <a class="link-btn slides" href="slides/lecture4-ml-pipelines.pdf" target="_blank">&#9654; Slides (PDF)</a>
+            <!-- <a class="link-btn resource" href="https://pandas.pydata.org/docs/user_guide/index.html" target="_blank">Pandas ETL Tutorial</a>
+            <a class="link-btn resource" href="https://scikit-learn.org/stable/modules/preprocessing.html" target="_blank">Scikit-learn Preprocessing</a>
+            <a class="link-btn resource" href="https://towardsdatascience.com/the-ultimate-guide-to-data-cleaning-3969843991d4" target="_blank">Data Cleaning Guide</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Lecture 5 -->
+      <div class="lecture-card" id="lec5">
+        <div class="lecture-header" onclick="toggle('lec5')">
+          <div class="lecture-num">05</div>
+          <div class="lecture-main">
+            <div class="lecture-title">ML: Model Lifecycle</div>
+            <div class="lecture-subtitle">Training loops, loss functions, evaluation metrics (Precision/Recall)</div>
+          </div>
+          <div class="lecture-toggle">&#8964;</div>
+        </div>
+        <div class="lecture-body">
+          <div class="lecture-cols">
+            <div>
+              <div class="lc-label">Technical Skills</div>
+              <div class="lc-text">Training loop implementation, loss function design, and evaluation metrics including Precision, Recall, and F1-score for model assessment.</div>
+            </div>
+            <div>
+              <div class="lc-label">Communication & Strategy</div>
+              <div class="lc-text">How to make an elevator pitch about your resume and adapt it for specific engineering or ML roles.</div>
+            </div>
+          </div>
+          <div class="lecture-instructors">
+            <div class="instructor-chip">
+              <div class="instructor-avatar">GP</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Gaurav Patel</div>
+                <a class="instructor-email" href="mailto:gpatel@purdue.edu">gpatel@purdue.edu</a>
+              </div>
+            </div>
+            <div class="instructor-chip">
+              <div class="instructor-avatar">SD</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Suhas Dara</div>
+                <a class="instructor-email" href="mailto:sdara@purdue.edu">sdara@purdue.edu</a>
+              </div>
+            </div>
+          </div>
+          <div class="lecture-links">
+            <a class="link-btn slides" href="slides/lecture5-model-lifecycle.pdf" target="_blank">&#9654; Slides (PDF)</a>
+            <!-- <a class="link-btn resource" href="https://course.fast.ai/" target="_blank">Fast.ai Practical DL</a>
+            <a class="link-btn resource" href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank">ML Evaluation Metrics</a>
+            <a class="link-btn resource" href="https://pytorch.org/tutorials/beginner/basics/optimization_tutorial.html" target="_blank">PyTorch Training Guide</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Lecture 6 -->
+      <div class="lecture-card" id="lec6">
+        <div class="lecture-header" onclick="toggle('lec6')">
+          <div class="lecture-num">06</div>
+          <div class="lecture-main">
+            <div class="lecture-title">ML: Optimization & DP</div>
+            <div class="lecture-subtitle">Dynamic Programming for sequence modeling and resource allocation</div>
+          </div>
+          <div class="lecture-toggle">&#8964;</div>
+        </div>
+        <div class="lecture-body">
+          <div class="lecture-cols">
+            <div>
+              <div class="lc-label">Technical Skills</div>
+              <div class="lc-text">Dynamic Programming (DP) techniques for sequence modeling and resource allocation problems commonly seen in ML system design interviews.</div>
+            </div>
+            <div>
+              <div class="lc-label">Communication & Strategy</div>
+              <div class="lc-text">Panel discussion with industry guests and students who have had recent interview success — Q&A and lessons learned.</div>
+            </div>
+          </div>
+          <div class="lecture-instructors">
+            <div class="instructor-chip">
+              <div class="instructor-avatar">GP</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Gaurav Patel</div>
+                <a class="instructor-email" href="mailto:gpatel@purdue.edu">gpatel@purdue.edu</a>
+              </div>
+            </div>
+            <div class="instructor-chip">
+              <div class="instructor-avatar">SD</div>
+              <div class="instructor-info">
+                <div class="instructor-name">Suhas Dara</div>
+                <a class="instructor-email" href="mailto:sdara@purdue.edu">sdara@purdue.edu</a>
+              </div>
+            </div>
+          </div>
+          <div class="lecture-links">
+            <a class="link-btn slides" href="slides/lecture6-optimization-dp.pdf" target="_blank">&#9654; Slides (PDF)</a>
+            <!-- <a class="link-btn resource" href="https://leetcode.com/tag/dynamic-programming/" target="_blank">DP on LeetCode</a> -->
+            <!-- <a class="link-btn resource" href="https://web.stanford.edu/class/cs224n/" target="_blank">Sequence Models (Stanford)</a>
+            <a class="link-btn resource" href="https://www.youtube.com/playlist?list=PLot-Xpze53leF0FeHz2X0aG3zd0mr1AW_" target="_blank">NeetCode DP Playlist</a> -->
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end lectures-list -->
+  </div><!-- end left col -->
+
+  <!-- RIGHT: Sidebar -->
+  <div class="sidebar">
+
+    <div class="info-card">
+      <div class="info-card-head">Course Details</div>
+      <div class="info-card-body">
+        <div class="info-row">
+          <div class="info-row-label">Dates</div>
+          <div class="info-row-value">May 18 – May 29, 2026</div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-label">Time</div>
+          <div class="info-row-value">MWF · 10:00am – 12:00pm Eastern</div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-label">In-Person</div>
+          <div class="info-row-value">Room TBD</div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-label">Online</div>
+          <div class="info-row-value">Zoom link TBD</div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-label">Registration</div>
+          <div class="info-row-value">Link available soon</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-head">Instructors</div>
+      <div class="info-card-body">
+        <div class="info-row">
+          <div class="info-row-label">Lead Instructor</div>
+          <div class="info-row-value">Wei Chen<br><a href="mailto:chen2732@purdue.edu">chen2732@purdue.edu</a></div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-label">Faculty Advisor</div>
+          <div class="info-row-value">Stanley Chan<br><a href="mailto:stanchan@purdue.edu">stanchan@purdue.edu</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-head">Eligibility & Prerequisites</div>
+      <div class="info-card-body">
+        <div class="info-row">
+          <div class="info-row-label">Who Can Apply</div>
+          <div class="info-row-value">Current Purdue students or recent graduates with a valid @purdue.edu email.</div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-label">Prerequisites</div>
+          <div class="info-row-value">
+            <span class="prereq-tag">Basic Python</span>
+            <span class="prereq-tag">ECE 20875</span>
+            <span class="prereq-tag">Python for Data Science</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end sidebar -->
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <span>Purdue University</span> · ECE Department · AI-Era Interview Bootcamp 2026
+</footer>
+
+<script>
+  function toggle(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
