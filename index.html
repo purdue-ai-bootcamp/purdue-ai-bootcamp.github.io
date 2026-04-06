@@ -429,6 +429,37 @@
     margin: 2px 2px 2px 0;
   }
 
+  .mode-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .mode-tag.inperson {
+    background: rgba(206,184,136,0.18);
+    border: 1px solid var(--border);
+    color: var(--gold-dark);
+  }
+
+  .mode-tag.online {
+    background: rgba(44,42,41,0.06);
+    border: 1px solid rgba(44,42,41,0.12);
+    color: var(--black);
+  }
+
+  .fee-note {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
   /* ── FOOTER ── */
   footer {
     background: var(--black);
@@ -808,23 +839,24 @@
         </div>
         <div class="info-row">
           <div class="info-row-label">In-Person</div>
-          <div class="info-row-value">Room TBD</div>
+          <div class="info-row-value"><span class="mode-tag inperson">Purdue only</span><br> WANG 2599</div>
         </div>
         <div class="info-row">
           <div class="info-row-label">Online</div>
-          <div class="info-row-value">Zoom link TBD</div>
+          <div class="info-row-value"><span class="mode-tag online">Open to anyone</span><br>Anyone may join online. Zoom link TBD.</div>
         </div>
         <div class="info-row">
           <div class="info-row-label">Registration</div>
-          <div class="info-row-value"><a href="https://www.eventreg.purdue.edu/online/AIJobinterview" target="_blank">Link Here</a></div>
+          <div class="info-row-value"><a href="https://www.eventreg.purdue.edu/online/AIJobinterview" target="_blank">Link Here</a><br>
+          Eligibility: Anyone.
+          </div> 
         </div>
         <div class="info-row">
           <div class="info-row-label">Registration Fee</div>
           <div class="info-row-value">
-            Eligibility: Anyone.<br>
-            Registration Fee: $99.<br>
-            Purdue Discount: Free to current Purdue students or recent graduates with a valid @Purdue.edu email.<br>
-            Please contact <a href="mailto:chen2732@purdue.edu">Wei Chen</a> at <a href="mailto:chen2732@purdue.edu">chen2732@purdue.edu</a> for the discount code.
+            $99.<br>
+            Purdue Discount: Free to current Purdue students or recent graduates with a valid @Purdue.edu email.
+            <span class="fee-note">Please contact <a href="mailto:chen2732@purdue.edu">Wei Chen</a> at <a href="mailto:chen2732@purdue.edu">chen2732@purdue.edu</a> for the discount code.</span>
           </div>
         </div>
       </div>
