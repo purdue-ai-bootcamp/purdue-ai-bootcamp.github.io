@@ -239,6 +239,29 @@
     font-weight: 400;
   }
 
+  .lecture-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: #7a746d;
+    font-weight: 500;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .meta-dot {
+    color: var(--gold-dark);
+    font-weight: 700;
+  }
+
+  .lecture-topics {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
   .lecture-toggle {
     width: 48px;
     flex-shrink: 0;
@@ -519,7 +542,7 @@
 <div class="info-strip">
   <div class="info-strip-inner">
     <div class="info-item"><span class="info-icon">📅</span> May 18 – 29, 2026</div>
-    <div class="info-item"><span class="info-icon">🕙</span> MWF · 10am–12pm Eastern</div>
+    <div class="info-item"><span class="info-icon">🕙</span> (W1) MWF, (W2) TWF · 10am–12pm EDT</div>
     <div class="info-item"><span class="info-icon">🎓</span> Undergrad Seniors / MS Students</div>
     <div class="info-item"><span class="info-icon">📧</span> @purdue.edu required</div>
   </div>
@@ -550,7 +573,12 @@
           <div class="lecture-num">01</div>
           <div class="lecture-main">
             <div class="lecture-title">Foundation: Python & OOP</div>
-            <div class="lecture-subtitle">Basics review, Complexity Analysis, Object-Oriented Programming</div>
+            <div class="lecture-meta">
+              <span class="lecture-date">Monday, May 18, 2026</span>
+              <span class="meta-dot">•</span>
+              <span class="lecture-time">10:00 AM to 12:00 PM ET</span>
+            </div>
+            <div class="lecture-topics">Basics review · Complexity analysis · Object-oriented programming</div>
           </div>
           <div class="lecture-toggle">&#8964;</div>
         </div>
@@ -596,7 +624,13 @@
           <div class="lecture-num">02</div>
           <div class="lecture-main">
             <div class="lecture-title">Data & Scalability</div>
-            <div class="lecture-subtitle">Core DSA — Trees, Graphs, Dictionaries, List operations, Memory</div>
+            <div class="lecture-meta">
+              <span class="lecture-date">Wednesday, May 20, 2026</span>
+              <span class="meta-dot">•</span>
+              <span class="lecture-time">10:00 AM to 12:00 PM ET</span>
+            </div>
+            <div class="lecture-topics">Core DSA — Trees · Graphs · Dictionaries · List operations · Memory</div>
+            <!-- <div class="lecture-subtitle">Core DSA — Trees, Graphs, Dictionaries, List operations, Memory</div> -->
           </div>
           <div class="lecture-toggle">&#8964;</div>
         </div>
@@ -642,7 +676,13 @@
           <div class="lecture-num">03</div>
           <div class="lecture-main">
             <div class="lecture-title">Foundation: AI Agents</div>
-            <div class="lecture-subtitle">How Claude works, designing agents, adding agents to systems</div>
+            <!-- <div class="lecture-subtitle">How Claude works, designing agents, adding agents to systems</div> -->
+            <div class="lecture-meta">
+              <span class="lecture-date">Friday, May 22, 2026</span>
+              <span class="meta-dot">•</span>
+              <span class="lecture-time">10:00 AM to 12:00 PM ET</span>
+            </div>
+            <div class="lecture-topics">How Claude works · designing agents · adding agents to systems</div>
           </div>
           <div class="lecture-toggle">&#8964;</div>
         </div>
@@ -688,7 +728,13 @@
           <div class="lecture-num">04</div>
           <div class="lecture-main">
             <div class="lecture-title">ML: Data Pipelines</div>
-            <div class="lecture-subtitle">Preprocessing, ETL (Extract, Transform, Load), handling data noise</div>
+            <div class="lecture-meta">
+              <span class="lecture-date">Tuesday, May 26, 2026</span>
+              <span class="meta-dot">•</span>
+              <span class="lecture-time">10:00 AM to 12:00 PM ET </span>
+              <span class="lecture-note">(Tuesday instead of Monday due to Memorial Day.)</span>
+            </div>
+            <div class="lecture-topics">Preprocessing · ETL (Extract, Transform, Load) · Handling Data Noise</div>
           </div>
           <div class="lecture-toggle">&#8964;</div>
         </div>
@@ -734,7 +780,12 @@
           <div class="lecture-num">05</div>
           <div class="lecture-main">
             <div class="lecture-title">ML: Model Lifecycle</div>
-            <div class="lecture-subtitle">Training loops, loss functions, evaluation metrics (Precision/Recall)</div>
+            <div class="lecture-meta">
+              <span class="lecture-date">Wednesday, May 27, 2026</span>
+              <span class="meta-dot">•</span>
+              <span class="lecture-time">10:00 AM to 12:00 PM ET</span>
+            </div>
+            <div class="lecture-topics">Training loops · Loss functions · Evaluation metrics (Precision/Recall)</div>
           </div>
           <div class="lecture-toggle">&#8964;</div>
         </div>
@@ -780,7 +831,12 @@
           <div class="lecture-num">06</div>
           <div class="lecture-main">
             <div class="lecture-title">ML: Optimization & DP</div>
-            <div class="lecture-subtitle">Dynamic Programming for sequence modeling and resource allocation</div>
+            <div class="lecture-meta">
+              <span class="lecture-date">Friday, May 29, 2026</span>
+              <span class="meta-dot">•</span>
+              <span class="lecture-time">10:00 AM to 12:00 PM ET</span>
+            </div>
+            <div class="lecture-topics">Dynamic Programming · Sequence Modeling · Resource Allocation</div>
           </div>
           <div class="lecture-toggle">&#8964;</div>
         </div>
