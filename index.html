@@ -394,50 +394,94 @@
   .info-card {
     background: #fff;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     margin-bottom: 24px;
+    box-shadow: 0 2px 16px rgba(44,42,41,0.07);
   }
 
   .info-card-head {
     background: var(--black);
-    padding: 14px 18px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
+    padding: 18px 20px 16px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .info-card-body { padding: 18px; }
+  .info-card-head::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .info-card-head-eyebrow {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(206,184,136,0.55);
+    margin-bottom: 4px;
+  }
+
+  .info-card-head-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.2px;
+  }
+
+  .info-card-body { padding: 6px 0; }
 
   .info-row {
     display: flex;
-    flex-direction: column;
-    gap: 3px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
+    gap: 12px;
+    align-items: flex-start;
+    padding: 13px 20px;
+    border-bottom: 0.5px solid rgba(206,184,136,0.2);
+    transition: background 0.15s;
   }
 
-  .info-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .info-row:first-child { padding-top: 0; }
+  .info-row:last-child { border-bottom: none; }
+  .info-row:hover { background: var(--cream); }
+
+  .info-row-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    background: rgba(206,184,136,0.12);
+    border: 0.5px solid rgba(206,184,136,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .info-row-icon svg { width: 14px; height: 14px; }
+
+  .info-row-content { flex: 1; min-width: 0; }
 
   .info-row-label {
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
     color: var(--gold-dark);
+    margin-bottom: 4px;
   }
 
   .info-row-value {
     font-size: 13px;
     color: var(--text);
+    line-height: 1.55;
   }
 
   .info-row-value a {
     color: var(--gold-dark);
     text-decoration: none;
+    font-weight: 500;
   }
   .info-row-value a:hover { text-decoration: underline; }
 
@@ -452,35 +496,130 @@
     margin: 2px 2px 2px 0;
   }
 
-  .mode-tag {
-    display: inline-block;
-    padding: 4px 10px;
+  .mode-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px 3px 6px;
     border-radius: 999px;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 600;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
   }
 
-  .mode-tag.inperson {
-    background: rgba(206,184,136,0.18);
-    border: 1px solid var(--border);
-    color: var(--gold-dark);
+  .mode-pill-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
   }
 
-  .mode-tag.online {
+  .mode-pill.inperson {
+    background: rgba(206,184,136,0.14);
+    border: 0.5px solid rgba(168,148,94,0.4);
+    color: #7a6535;
+  }
+
+  .mode-pill.inperson .mode-pill-dot { background: var(--gold-dark); }
+
+  .mode-pill.online {
     background: rgba(44,42,41,0.06);
-    border: 1px solid rgba(44,42,41,0.12);
+    border: 0.5px solid rgba(44,42,41,0.14);
+    color: var(--black-soft);
+  }
+
+  .mode-pill.online .mode-pill-dot { background: #3d8c5a; }
+
+  .week-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.5;
+    margin-bottom: 2px;
+  }
+
+  .week-badge-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold-dark);
+    background: rgba(206,184,136,0.12);
+    border: 0.5px solid rgba(206,184,136,0.3);
+    border-radius: 4px;
+    padding: 1px 5px;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+  }
+
+  .fee-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 7px;
+  }
+
+  .fee-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
     color: var(--black);
+  }
+
+  .fee-price-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .fee-discount-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(61,139,90,0.08);
+    border: 0.5px solid rgba(61,139,90,0.25);
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 11.5px;
+    color: #2b6e42;
+    line-height: 1.4;
+    margin-bottom: 7px;
   }
 
   .fee-note {
     display: block;
-    margin-top: 6px;
-    font-size: 12px;
+    font-size: 11.5px;
     line-height: 1.5;
     color: var(--text-muted);
+  }
+
+  .register-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: var(--black);
+    color: var(--gold);
+    border-radius: 7px;
+    padding: 9px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: background 0.15s;
+    margin-top: 2px;
+  }
+
+  .register-btn:hover { background: var(--black-soft); color: var(--gold); }
+
+  .register-btn-arrow {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(206,184,136,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
   }
 
   /* ── FOOTER ── */
@@ -1069,37 +1208,115 @@
   <div class="sidebar">
 
     <div class="info-card">
-      <div class="info-card-head">Course Details</div>
+      <div class="info-card-head">
+        <div class="info-card-head-eyebrow">Purdue University · 2026</div>
+        <div class="info-card-head-title">Course Details</div>
+      </div>
       <div class="info-card-body">
+
         <div class="info-row">
-          <div class="info-row-label">Dates</div>
-          <div class="info-row-value">May 18–22 and May 26, 28–29, 2026</div>
-        </div>
-        <div class="info-row">
-          <div class="info-row-label">Time</div>
-          <div class="info-row-value">Week 1: MWF · 10:00am–12:00pm Eastern<br>Week 2: TWF · 10:00am–12:00pm Eastern</div>
-        </div>
-        <div class="info-row">
-          <div class="info-row-label">In-Person</div>
-          <div class="info-row-value"><span class="mode-tag inperson">Purdue only</span><br> WANG 2599</div>
-        </div>
-        <div class="info-row">
-          <div class="info-row-label">Online</div>
-          <div class="info-row-value"><span class="mode-tag online">Open to anyone</span><br>Anyone may join online. Zoom link TBD.</div>
-        </div>
-        <div class="info-row">
-          <div class="info-row-label">Registration</div>
-          <div class="info-row-value"><a href="https://www.eventreg.purdue.edu/online/AIJobinterview" target="_blank">Link Here</a><br>
-          </div> 
-        </div>
-        <div class="info-row">
-          <div class="info-row-label">Registration Fee</div>
-          <div class="info-row-value">
-            $99.<br>
-            Purdue Discount: Free to current Purdue students or recent graduates with a valid @Purdue.edu email.
-            <span class="fee-note">Please contact <a href="mailto:chen2732@purdue.edu">Wei Chen</a> at <a href="mailto:chen2732@purdue.edu">chen2732@purdue.edu</a> for the discount code.</span>
+          <div class="info-row-icon">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="2.5" width="14" height="12" rx="2" stroke="#a8945e" stroke-width="1.2"/>
+              <path d="M1 6.5h14" stroke="#a8945e" stroke-width="1.2"/>
+              <path d="M5 1v3M11 1v3" stroke="#a8945e" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="info-row-content">
+            <div class="info-row-label">Dates</div>
+            <div class="info-row-value">May 18–22 &amp; May 26, 28–29, 2026</div>
           </div>
         </div>
+
+        <div class="info-row">
+          <div class="info-row-icon">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="6.5" stroke="#a8945e" stroke-width="1.2"/>
+              <path d="M8 4.5V8l2.5 2" stroke="#a8945e" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="info-row-content">
+            <div class="info-row-label">Time</div>
+            <div class="info-row-value">
+              <div class="week-badge"><span class="week-badge-label">Wk 1</span> MWF · 10:00am–12:00pm ET</div>
+              <div class="week-badge"><span class="week-badge-label">Wk 2</span> TWF · 10:00am–12:00pm ET</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-row-icon">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5S12.5 9.5 12.5 6c0-2.5-2-4.5-4.5-4.5z" stroke="#a8945e" stroke-width="1.2"/>
+              <circle cx="8" cy="6" r="1.5" stroke="#a8945e" stroke-width="1.1"/>
+            </svg>
+          </div>
+          <div class="info-row-content">
+            <div class="info-row-label">In-Person</div>
+            <div class="info-row-value">
+              <div class="mode-pill inperson"><span class="mode-pill-dot"></span>Purdue Only</div>
+              <div style="color:#6b6560;font-size:12px;">WANG 2599</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-row-icon">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="3.5" width="14" height="9" rx="1.5" stroke="#a8945e" stroke-width="1.2"/>
+              <path d="M10 8l-3.5 2V6L10 8z" fill="#a8945e"/>
+            </svg>
+          </div>
+          <div class="info-row-content">
+            <div class="info-row-label">Online</div>
+            <div class="info-row-value">
+              <div class="mode-pill online"><span class="mode-pill-dot"></span>Open to Anyone</div>
+              <div style="color:#6b6560;font-size:12px;">Zoom link TBD</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-row-icon">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8.5l3.5 3.5L13 4" stroke="#a8945e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="info-row-content">
+            <div class="info-row-label">Registration</div>
+            <div class="info-row-value">
+              <a class="register-btn" href="https://www.eventreg.purdue.edu/online/AIJobinterview" target="_blank">
+                <span>Register Now</span>
+                <span class="register-btn-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-row-icon">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="6.5" stroke="#a8945e" stroke-width="1.2"/>
+              <path d="M8 7v4" stroke="#a8945e" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="8" cy="5" r="0.75" fill="#a8945e"/>
+            </svg>
+          </div>
+          <div class="info-row-content">
+            <div class="info-row-label">Registration Fee</div>
+            <div class="info-row-value">
+              <div class="fee-price-row">
+                <span class="fee-price">$99</span>
+                <span class="fee-price-sub">general admission</span>
+              </div>
+              <div class="fee-discount-badge">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1.5L7.2 4.5H10L7.8 6.3 8.6 9.5 6 7.8 3.4 9.5l.8-3.2L2 4.5h2.8z" fill="#2b6e42"/></svg>
+                Free for Purdue students &amp; recent grads
+              </div>
+              <span class="fee-note">Contact <a href="mailto:chen2732@purdue.edu">Wei Chen</a> at <a href="mailto:chen2732@purdue.edu">chen2732@purdue.edu</a> for the discount code.</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
