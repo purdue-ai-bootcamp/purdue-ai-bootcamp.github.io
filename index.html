@@ -522,6 +522,192 @@
   .lecture-card:nth-child(4) { animation-delay: 0.20s; }
   .lecture-card:nth-child(5) { animation-delay: 0.25s; }
   .lecture-card:nth-child(6) { animation-delay: 0.30s; }
+
+  /* ── MEET THE INSTRUCTORS SECTION ── */
+  .instructors-section {
+    background: var(--black);
+    padding: 56px 32px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .instructors-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .instructors-section::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(206,184,136,0.08);
+    pointer-events: none;
+  }
+
+  .instructors-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .instructors-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .instructors-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 6px;
+  }
+
+  .instructors-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .instructors-subtitle {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+    margin-top: 4px;
+  }
+
+  .instructors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .instructor-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(206,184,136,0.15);
+    border-radius: 10px;
+    padding: 24px 20px 20px;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .instructor-card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(206,184,136,0.35);
+    transform: translateY(-2px);
+  }
+
+  .instructor-card-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .instructor-card-initials {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background: rgba(206,184,136,0.12);
+    border: 2px solid rgba(206,184,136,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 14px;
+    flex-shrink: 0;
+  }
+
+  .instructor-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+
+  .instructor-card-role {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 10px;
+  }
+
+  .instructor-card-bio {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .instructor-card-lectures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .lecture-tag {
+    font-size: 11px;
+    font-weight: 500;
+    background: rgba(206,184,136,0.1);
+    border: 1px solid rgba(206,184,136,0.2);
+    color: var(--gold-light);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+
+  .instructor-card-email {
+    display: block;
+    font-size: 12px;
+    color: var(--gold-dark);
+    text-decoration: none;
+    border-top: 1px solid rgba(206,184,136,0.1);
+    padding-top: 12px;
+    margin-top: 4px;
+  }
+  .instructor-card-email:hover { color: var(--gold); text-decoration: underline; }
+
+  /* Stagger instructor cards */
+  .instructor-card:nth-child(1) { animation-delay: 0.05s; }
+  .instructor-card:nth-child(2) { animation-delay: 0.10s; }
+  .instructor-card:nth-child(3) { animation-delay: 0.15s; }
+  .instructor-card:nth-child(4) { animation-delay: 0.20s; }
+  .instructor-card:nth-child(5) { animation-delay: 0.25s; }
+  .instructor-card:nth-child(6) { animation-delay: 0.30s; }
+
+  @media (max-width: 720px) {
+    .instructors-section { padding: 40px 16px 48px; }
+    .instructors-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .instructor-card { padding: 18px 14px 16px; }
+    .instructor-card-initials { width: 56px; height: 56px; font-size: 17px; border-radius: 8px; }
+    .instructor-card-photo { width: 56px; height: 56px; border-radius: 8px; }
+    .instructor-card-name { font-size: 14px; }
+  }
+
+  @media (max-width: 480px) {
+    .instructors-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -951,6 +1137,128 @@
 
   </div><!-- end sidebar -->
 </main>
+
+<!-- ═══ MEET THE INSTRUCTORS ═══ -->
+<section class="instructors-section">
+  <div class="instructors-inner">
+    <div class="instructors-header">
+      <div>
+        <div class="instructors-label">The Team</div>
+        <div class="instructors-title">Meet the Instructors</div>
+        <div class="instructors-subtitle">Graduate students and researchers teaching this bootcamp</div>
+      </div>
+    </div>
+
+    <div class="instructors-grid">
+
+      <!-- Wei Chen — Lead Instructor -->
+      <div class="instructor-card">
+        <!-- Replace the initials div below with an <img> tag once photo is received:
+             <img class="instructor-card-photo" src="photos/wei-chen.jpg" alt="Wei Chen"> -->
+        <div class="instructor-card-initials">WC</div>
+        <div class="instructor-card-name">Wei Chen</div>
+        <div class="instructor-card-role">Lead Instructor</div>
+        <div class="instructor-card-bio">
+          [Bio coming soon.]
+        </div>
+        <div class="instructor-card-lectures">
+          <span class="lecture-tag">Lecture 01</span>
+          <span class="lecture-tag">Lecture 02</span>
+        </div>
+        <a class="instructor-card-email" href="mailto:chen2732@purdue.edu">chen2732@purdue.edu</a>
+      </div>
+
+      <!-- Prateek Chennuri -->
+      <div class="instructor-card">
+        <!-- <div class="instructor-card-initials">PC</div> -->
+        <img class="instructor-card-photo" src="photos/2025-Chennuri-Prateek.jpg" alt="Prateek Chennuri">
+        <div class="instructor-card-name">Prateek Chennuri</div>
+        <div class="instructor-card-role">Student Instructor</div>
+        <div class="instructor-card-bio">
+          Prateek Chennuri is a Ph.D. candidate in Electrical and Computer Engineering at Purdue University, advised by Prof.
+          Stanley H. Chan. He received his B.Tech–M.Tech dual degree from the Indian Institute of Technology (IIT) Gandhinagar in
+          2021. His research focuses on computational imaging and computer vision, with an emphasis on generative methods for
+          inverse problems and perception. His work spans tasks such as denoising, super-resolution, depth estimation, and
+          reflectivity recovery across conventional CMOS sensors as well as emerging modalities like single-photon detectors
+          (SPADs) and event cameras.
+          Alongside his research, he has recently gone through multiple industry interview processes at leading technology
+          companies, gaining first-hand insight into modern hiring pipelines and evaluation strategies.
+          He will be joining Apple’s Camera Algorithms team as a Computational Photography / Computer Vision Machine Learning
+          Engineer in July 2026.
+        </div>
+        <div class="instructor-card-lectures">
+          <span class="lecture-tag">Lecture 01</span>
+          <span class="lecture-tag">Lecture 02</span>
+        </div>
+        <a class="instructor-card-email" href="mailto:pchennur@purdue.edu">pchennur@purdue.edu</a>
+      </div>
+
+      <!-- Deming Chu -->
+      <div class="instructor-card">
+        <div class="instructor-card-initials">DC</div>
+        <div class="instructor-card-name">Deming Chu</div>
+        <div class="instructor-card-role">Student Instructor</div>
+        <div class="instructor-card-bio">
+          [Bio coming soon.]
+        </div>
+        <div class="instructor-card-lectures">
+          <span class="lecture-tag">Lecture 03</span>
+          <span class="lecture-tag">Lecture 04</span>
+        </div>
+        <a class="instructor-card-email" href="mailto:chu292@purdue.edu">chu292@purdue.edu</a>
+      </div>
+
+      <!-- Zhaoying Pan -->
+      <div class="instructor-card">
+        <!-- <div class="instructor-card-initials">ZP</div> -->
+        <img class="instructor-card-photo" src="photos/zhaoying_pan.jpg" alt="Zhaoying Pan">
+        <div class="instructor-card-name">Zhaoying Pan</div>
+        <div class="instructor-card-role">Student Instructor</div>
+        <div class="instructor-card-bio">
+          I am a third-year PhD student in Electrical and Computer Engineering at Purdue University, where my work focuses on
+          building trustworthy and robust AI systems. My research centers on understanding and mitigating subpopulation shifts and
+          spurious correlations in machine learning models.
+        </div>
+        <div class="instructor-card-lectures">
+          <span class="lecture-tag">Lecture 03</span>
+          <span class="lecture-tag">Lecture 04</span>
+        </div>
+        <a class="instructor-card-email" href="mailto:pan433@purdue.edu">pan433@purdue.edu</a>
+      </div>
+
+      <!-- Gaurav Patel -->
+      <div class="instructor-card">
+        <div class="instructor-card-initials">GP</div>
+        <div class="instructor-card-name">Gaurav Patel</div>
+        <div class="instructor-card-role">Student Instructor</div>
+        <div class="instructor-card-bio">
+          [Bio coming soon.]
+        </div>
+        <div class="instructor-card-lectures">
+          <span class="lecture-tag">Lecture 05</span>
+          <span class="lecture-tag">Lecture 06</span>
+        </div>
+        <a class="instructor-card-email" href="mailto:pate1332@purdue.edu">pate1332@purdue.edu</a>
+      </div>
+
+      <!-- Suhas Dara -->
+      <div class="instructor-card">
+        <div class="instructor-card-initials">SD</div>
+        <div class="instructor-card-name">Suhas Dara</div>
+        <div class="instructor-card-role">Student Instructor</div>
+        <div class="instructor-card-bio">
+          [Bio coming soon.]
+        </div>
+        <div class="instructor-card-lectures">
+          <span class="lecture-tag">Lecture 05</span>
+          <span class="lecture-tag">Lecture 06</span>
+        </div>
+        <a class="instructor-card-email" href="mailto:daras@purdue.edu">daras@purdue.edu</a>
+      </div>
+
+    </div><!-- end instructors-grid -->
+  </div><!-- end instructors-inner -->
+</section>
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
