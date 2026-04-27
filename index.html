@@ -730,7 +730,7 @@
 
   .instructors-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
   }
 
@@ -799,6 +799,34 @@
     line-height: 1.65;
     margin-bottom: 14px;
   }
+
+  .instructor-card-bio.clamped {
+    display: -webkit-box;
+    -webkit-line-clamp: 15;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .instructor-card-bio.clamped.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+  }
+
+  .read-more-btn {
+    background: none;
+    border: none;
+    color: var(--gold-dark);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
+    transition: color 0.15s;
+    display: block;
+  }
+  .read-more-btn:hover { color: var(--gold); }
 
   .instructor-card-lectures {
     display: flex;
@@ -1393,7 +1421,7 @@
         <img class="instructor-card-photo" src="photos/2025-Chennuri-Prateek.jpg" alt="Prateek Chennuri">
         <div class="instructor-card-name">Prateek Chennuri</div>
         <div class="instructor-card-role">Student Instructor</div>
-        <div class="instructor-card-bio">
+        <div class="instructor-card-bio clamped">
           Prateek Chennuri is a Ph.D. candidate in Electrical and Computer Engineering at Purdue University, advised by Prof.
           Stanley H. Chan. He received his B.Tech–M.Tech dual degree from the Indian Institute of Technology (IIT) Gandhinagar in
           2021. His research focuses on computational imaging and computer vision, with an emphasis on generative methods for
@@ -1405,6 +1433,7 @@
           He will be joining Apple’s Camera Algorithms team as a Computational Photography / Computer Vision Machine Learning
           Engineer in July 2026.
         </div>
+        <button class="read-more-btn" onclick="toggleBio(this)">Read more ▾</button>
         <div class="instructor-card-lectures">
           <span class="lecture-tag">Lecture 01</span>
           <span class="lecture-tag">Lecture 02</span>
@@ -1520,6 +1549,12 @@
   function toggle(id) {
     const card = document.getElementById(id);
     card.classList.toggle('open');
+  }
+
+  function toggleBio(btn) {
+    const bio = btn.previousElementSibling;
+    bio.classList.toggle('expanded');
+    btn.textContent = bio.classList.contains('expanded') ? 'Read less ▴' : 'Read more ▾';
   }
 </script>
 </body>
